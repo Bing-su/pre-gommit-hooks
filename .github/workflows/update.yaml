@@ -22,8 +22,10 @@ jobs:
 
       - run: uv pip install --system .
       - run: python pre_gommit_hooks.py
-      - uses: pre-commit/action@v3.0.1
-        continue-on-error: true
+      - uses: creyD/prettier_action@v4.3
+        with:
+          prettier_options: --write **/*.{yaml,yml}
+          only_changed: True
 
       - uses: dorny/paths-filter@v3
         id: changes
@@ -34,6 +36,7 @@ jobs:
 
       - run: |
           let today = date now | format date "v%Y.%m.%d"
+          echo $"($today)"
           $"TODAY=($today)\n" | save --append $env.GITHUB_OUTPUT
         id: date
 
