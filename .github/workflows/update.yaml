@@ -42,4 +42,3 @@ jobs:
         with:
           commit_message: "Automatically update pre-commit hooks: ${{ steps.date.outputs.TODAY }}"
           tagging_message: ${{ steps.date.outputs.TODAY }}
-          file_pattern: ".pre-commit-hooks.yaml"
