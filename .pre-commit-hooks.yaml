@@ -1,34 +1,35 @@
 - id: errcheck
   name: errcheck
   entry: errcheck
-  types: [go]
+  types:
+    - go
   language: golang
   additional_dependencies:
     - github.com/kisielk/errcheck@v1.7.0
   description: Run errcheck on Go files
-
 - id: goimports
   name: goimports
   entry: goimports -l -w
-  types: [go]
+  types:
+    - go
   language: golang
   additional_dependencies:
     - golang.org/x/tools/cmd/goimports@v0.20.0
   description: Run goimports on Go files
-
 - id: golangci-lint
   name: golangci-lint
   entry: golangci-lint run --fix
-  types: [go]
+  types:
+    - go
   language: golang
   additional_dependencies:
     - github.com/golangci/golangci-lint/cmd/golangci-lint@v1.58.0
   description: Run goimports on Go files
-
 - id: gofumpt
   name: gofumpt
   entry: gofumpt -l -w
-  types: [go]
+  types:
+    - go
   language: golang
   additional_dependencies:
     - mvdan.cc/gofumpt@v0.6.0
