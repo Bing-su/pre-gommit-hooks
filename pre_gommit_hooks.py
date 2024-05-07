@@ -140,6 +140,18 @@ async def update(hooks: list[Hook]) -> list[Hook]:
     return [task.result() for task in tasks]
 
 
+def update_github_output(value: str):
+    if "GITHUB_OUTPUT" not in os.environ:
+        return
+    path = Path(os.environ["GITHUB_OUTPUT"])
+    with path.open("a", encoding="utf-8") as file:
+        file.write(f"UPDATED={value}\n")
+
+
+def is_updated(old: list[Hook], new: list[Hook]) -> bool:
+    return any(o != n for o, n in zip(old, new, strict=True))
+
+
 def main():
     io_hooks = read_yaml(YAML_FILE)
     match io_hooks:
@@ -156,6 +168,11 @@ def main():
 
     with Path(YAML_FILE).open("w", encoding="utf-8") as file:
         yaml.dump(data, file, sort_keys=False)
+
+    if is_updated(hooks, updated):
+        update_github_output("true")
+    else:
+        update_github_output("false")
 
 
 if __name__ == "__main__":

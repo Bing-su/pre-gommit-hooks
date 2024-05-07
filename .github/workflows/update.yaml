@@ -12,6 +12,9 @@ defaults:
 jobs:
   update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
       - uses: actions/checkout@v4
       - uses: hustcer/setup-nu@v3
@@ -22,25 +25,19 @@ jobs:
 
       - run: uv pip install --system .
       - run: python pre_gommit_hooks.py
+        id: update
       - uses: creyD/prettier_action@v4.3
         with:
           prettier_options: --write **/*.{yaml,yml}
-          only_changed: True
-
-      - uses: dorny/paths-filter@v3
-        id: changes
-        with:
-          filters: |
-            hook:
-              - '.pre-commit-hooks.yaml'
+          only_changed: true
 
       - run: |
           let today = date now | format date "v%Y.%m.%d"
-          echo $"($today)"
+          print $today
           $"TODAY=($today)\n" | save --append $env.GITHUB_OUTPUT
         id: date
 
-      - if: steps.changes.outputs.hook == 'true'
+      - if: steps.update.outputs.UPDATED == 'true'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Automatically update pre-commit hooks: ${{ steps.date.outputs.TODAY }}"
