@@ -24,18 +24,27 @@ jobs:
       - uses: yezz123/setup-uv@v4
 
       - run: uv pip install --system .
+
       - run: python pre_gommit_hooks.py
         id: update
+
       - uses: creyD/prettier_action@v4.3
         with:
           prettier_options: --write **/*.{yaml,yml}
           only_changed: true
 
-      - run: |
+      - name: Get calver
+        run: |
           let today = date now | format date "v%Y.%m.%d"
           print $today
           $"TODAY=($today)\n" | save --append $env.GITHUB_OUTPUT
         id: date
+
+      - name: Update README
+        if: steps.update.outputs.UPDATED == 'true'
+        run: |
+          let today = ${{ steps.date.outputs.TODAY }}
+          open README.md | str replace --regex v\d+\.\d+.\d+ $today | save -f README.md
 
       - if: steps.update.outputs.UPDATED == 'true'
         uses: stefanzweifel/git-auto-commit-action@v5
