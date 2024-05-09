@@ -43,7 +43,7 @@ jobs:
       - name: Update README
         if: steps.update.outputs.UPDATED == 'true'
         run: |
-          let today = ${{ steps.date.outputs.TODAY }}
+          let today = '${{ steps.date.outputs.TODAY }}'
           open README.md | str replace --regex v\d+\.\d+\.\d+ $today | save -f README.md
 
       - if: steps.update.outputs.UPDATED == 'true'
