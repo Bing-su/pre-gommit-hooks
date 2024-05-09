@@ -34,3 +34,24 @@
   additional_dependencies:
     - mvdan.cc/gofumpt@v0.6.0
   description: Run gofumpt on Go files
+- id: gofmt
+  name: gofmt
+  entry: go fmt
+  types:
+    - go
+  language: golang
+  description: Run go fmt on Go files
+- id: govet
+  name: govet
+  entry: go vet
+  types:
+    - go
+  language: golang
+  description: Run go vet on Go files
+- id: gofix
+  name: gofix
+  entry: go fix
+  types:
+    - go
+  language: golang
+  description: Run go fix on Go files

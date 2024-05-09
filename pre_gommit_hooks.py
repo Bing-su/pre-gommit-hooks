@@ -94,10 +94,10 @@ class Hook(BaseModel):
     id: str
     name: str
     entry: str
-    types: list[str]
-    language: str
-    additional_dependencies: list[str]
-    description: str
+    types: list[str] = ["go"]
+    language: str = "golang"
+    additional_dependencies: list[str] = []
+    description: str = ""
 
 
 @impure_safe
