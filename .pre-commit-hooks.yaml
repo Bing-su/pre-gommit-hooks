@@ -23,7 +23,7 @@
     - go
   language: golang
   additional_dependencies:
-    - github.com/golangci/golangci-lint/cmd/golangci-lint@v1.58.0
+    - github.com/golangci/golangci-lint/cmd/golangci-lint@v1.58.1
   description: Run golangci-lint on Go files
 - id: gofumpt
   name: gofumpt
@@ -40,6 +40,7 @@
   types:
     - go
   language: golang
+  additional_dependencies: []
   description: Run go fmt on Go files
 - id: govet
   name: govet
@@ -47,6 +48,7 @@
   types:
     - go
   language: golang
+  additional_dependencies: []
   description: Run go vet on Go files
 - id: gofix
   name: gofix
@@ -54,4 +56,5 @@
   types:
     - go
   language: golang
+  additional_dependencies: []
   description: Run go fix on Go files
