@@ -12,6 +12,9 @@ My pre-commit hooks for golang.
     - id: goimports
     - id: golangci-lint
     - id: gofumpt
+    - id: gofmt
+    - id: govet
+    - id: gofix
 ```
 
 ## See
