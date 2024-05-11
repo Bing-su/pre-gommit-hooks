@@ -32,6 +32,8 @@ def _alias(package: str) -> str:
             return "github.com/golangci/golangci-lint"
         case "golang.org/x/tools/cmd/goimports":
             return "golang.org/x/tools"
+        case "honnef.co/go/tools/cmd/staticcheck":
+            return "honnef.co/go/tools"
         case _:
             return package
 

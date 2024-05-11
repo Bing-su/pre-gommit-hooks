@@ -34,6 +34,15 @@
   additional_dependencies:
     - mvdan.cc/gofumpt@v0.6.0
   description: Run gofumpt on Go files
+- id: staticcheck
+  name: staticcheck
+  entry: staticcheck
+  types:
+    - go
+  language: golang
+  additional_dependencies:
+    - honnef.co/go/tools/cmd/staticcheck@v0.4.7
+  description: Run staticcheck on Go files
 - id: gofmt
   name: gofmt
   entry: go fmt
