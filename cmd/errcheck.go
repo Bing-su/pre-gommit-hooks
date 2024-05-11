@@ -9,7 +9,7 @@ func init() {
 		Use:   "errcheck [files...]",
 		Short: "Run errcheck on go files",
 		Run: func(cmd *cobra.Command, args []string) {
-			runCmd("errcheck", pkgNames(args)...)
+			runCmd("errcheck", filterArgs(args)...)
 		},
 	}
 

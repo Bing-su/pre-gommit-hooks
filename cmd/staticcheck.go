@@ -9,7 +9,7 @@ func init() {
 		Use:   "staticcheck [files...]",
 		Short: "Run staticcheck on go files",
 		Run: func(cmd *cobra.Command, args []string) {
-			runCmd("staticcheck", pkgNames(args)...)
+			runCmd("staticcheck", filterArgs(args)...)
 		},
 	}
 

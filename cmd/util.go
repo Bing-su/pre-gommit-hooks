@@ -6,6 +6,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"slices"
+	"strings"
 )
 
 func runCmd(bin string, args ...string) {
@@ -20,13 +21,18 @@ func runCmd(bin string, args ...string) {
 	}
 }
 
-func pkgNames(paths []string) []string {
-	var dirs []string
-	for _, path := range paths {
-		dir := fmt.Sprintf("./%s", filepath.Dir(path))
-		if !slices.Contains(dirs, dir) {
-			dirs = append(dirs, dir)
+func filterArgs(args []string) []string {
+	var result []string
+	for _, arg := range args {
+		if strings.HasPrefix(arg, "-") {
+			result = append(result, arg)
+			continue
+		}
+
+		dir := fmt.Sprintf("./%s", filepath.Dir(arg))
+		if !slices.Contains(result, dir) {
+			result = append(result, dir)
 		}
 	}
-	return dirs
+	return result
 }

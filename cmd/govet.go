@@ -9,7 +9,7 @@ func init() {
 		Use:   "govet [files...]",
 		Short: "Run go vet on go files",
 		Run: func(cmd *cobra.Command, args []string) {
-			args = append([]string{"vet"}, pkgNames(args)...)
+			args = append([]string{"vet"}, filterArgs(args)...)
 			runCmd("go", args...)
 		},
 	}
