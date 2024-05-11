@@ -1,6 +1,6 @@
 - id: errcheck
   name: errcheck
-  entry: errcheck
+  entry: pre-gommit-hooks errcheck
   types:
     - go
   language: golang
@@ -18,7 +18,7 @@
   description: Run goimports on Go files
 - id: golangci-lint
   name: golangci-lint
-  entry: golangci-lint run --fix
+  entry: pre-gommit-hooks golangci-lint
   types:
     - go
   language: golang
@@ -36,32 +36,32 @@
   description: Run gofumpt on Go files
 - id: staticcheck
   name: staticcheck
-  entry: staticcheck
+  entry: pre-gommit-hooks staticcheck
   types:
     - go
   language: golang
   additional_dependencies:
     - honnef.co/go/tools/cmd/staticcheck@v0.4.7
   description: Run staticcheck on Go files
-- id: gofmt
-  name: gofmt
-  entry: go fmt
-  types:
-    - go
-  language: golang
-  additional_dependencies: []
-  description: Run go fmt on Go files
 - id: govet
   name: govet
-  entry: go vet
+  entry: pre-gommit-hooks govet
   types:
     - go
   language: golang
   additional_dependencies: []
   description: Run go vet on Go files
+- id: gofmt
+  name: gofmt
+  entry: pre-gommit-hooks gofmt
+  types:
+    - go
+  language: golang
+  additional_dependencies: []
+  description: Run go fmt on Go files
 - id: gofix
   name: gofix
-  entry: go fix
+  entry: pre-gommit-hooks gofix
   types:
     - go
   language: golang
