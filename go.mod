@@ -1,8 +1,8 @@
 module github.com/Bing-su/pre-gommit-hooks
 
-go 1.21
+go 1.22
 
-require github.com/spf13/cobra v1.8.0
+require github.com/spf13/cobra v1.8.1
 
 require (
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
