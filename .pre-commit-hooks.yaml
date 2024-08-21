@@ -23,7 +23,7 @@
     - go
   language: golang
   additional_dependencies:
-    - github.com/golangci/golangci-lint/cmd/golangci-lint@v1.60.1
+    - github.com/golangci/golangci-lint/cmd/golangci-lint@v1.60.2
   description: Run golangci-lint on Go files
 - id: gofumpt
   name: gofumpt
