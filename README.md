@@ -6,7 +6,7 @@ My pre-commit hooks for golang.
 
 ```yaml
 - repo: https://github.com/Bing-su/pre-gommit-hooks
-  rev: v2024.08.21
+  rev: v2024.08.23
   hooks:
     - id: errcheck
     - id: goimports
