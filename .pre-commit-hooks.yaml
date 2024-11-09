@@ -14,7 +14,7 @@
     - go
   language: golang
   additional_dependencies:
-    - golang.org/x/tools/cmd/goimports@v0.26.0
+    - golang.org/x/tools/cmd/goimports@v0.27.0
   description: Run goimports on Go files
 - id: golangci-lint
   name: golangci-lint
