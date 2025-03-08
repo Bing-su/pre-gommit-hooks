@@ -41,7 +41,7 @@
     - go
   language: golang
   additional_dependencies:
-    - honnef.co/go/tools/cmd/staticcheck@v0.5.1
+    - honnef.co/go/tools/cmd/staticcheck@v0.6.1
   description: Run staticcheck on Go files
 - id: govet
   name: govet
