@@ -5,7 +5,7 @@
     - go
   language: golang
   additional_dependencies:
-    - github.com/kisielk/errcheck@v1.8.0
+    - github.com/kisielk/errcheck@v1.9.0
   description: Run errcheck on Go files
 - id: goimports
   name: goimports
