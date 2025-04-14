@@ -14,7 +14,7 @@
     - go
   language: golang
   additional_dependencies:
-    - golang.org/x/tools/cmd/goimports@v0.31.0
+    - golang.org/x/tools/cmd/goimports@v0.32.0
   description: Run goimports on Go files
 - id: golangci-lint
   name: golangci-lint
@@ -32,7 +32,7 @@
     - go
   language: golang
   additional_dependencies:
-    - mvdan.cc/gofumpt@v0.7.0
+    - mvdan.cc/gofumpt@v0.8.0
   description: Run gofumpt on Go files
 - id: staticcheck
   name: staticcheck
