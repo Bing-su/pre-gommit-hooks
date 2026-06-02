@@ -23,7 +23,8 @@ jobs:
       - run: uv run pre_gommit_hooks.py
         id: update
 
-      - uses: oxc-project/oxfmt-action@v0.0.1
+      - name: Run oxfmt
+        run: npx oxfmt
 
       - name: Get calver
         run: |
