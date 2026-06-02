@@ -16,22 +16,14 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: hustcer/setup-nu@v3
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - uses: yezz123/setup-uv@v4
+      - uses: astral-sh/setup-uv@v8.1.0
 
-      - run: uv pip install --system .
-
-      - run: python pre_gommit_hooks.py
+      - run: uv run pre_gommit_hooks.py
         id: update
 
-      - uses: creyD/prettier_action@v4.3
-        with:
-          prettier_options: --write **/*.{yaml,yml}
-          only_changed: true
+      - uses: oxc-project/oxfmt-action@v0.0.1
 
       - name: Get calver
         run: |
@@ -47,7 +39,7 @@ jobs:
           open README.md --raw | collect | decode utf-8 | str replace --regex v\d+\.\d+\.\d+ $today | save -f README.md
 
       - if: steps.update.outputs.UPDATED == 'true'
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "Automatically update pre-commit hooks: ${{ steps.date.outputs.TODAY }}"
           tagging_message: ${{ steps.date.outputs.TODAY }}
